@@ -2,12 +2,12 @@ function EditProfile() {
   return (
     <div className="w-full flex justify-center items-center p-4">
       <div className="bg-white w-full max-w-xl px-4 sm:px-6 md:px-8 py-5 rounded-md border border-gray-200 shadow-sm">
-        <p className="text-[#0D0D0D] text-center font-bold text-xl sm:text-2xl mb-5">
+        <p className="text-[#111827] text-center font-bold text-xl sm:text-2xl mb-5">
           Edit Your Profile
         </p>
         <form className="space-y-4">
           <div>
-            <label className="text-sm md:text-base text-[#0D0D0D] mb-2 font-semibold block">
+            <label className="text-sm md:text-base text-[#111827] mb-2 font-semibold block">
               User Name
             </label>
             <input
@@ -20,7 +20,7 @@ function EditProfile() {
           </div>
 
           <div>
-            <label className="text-sm md:text-base text-[#0D0D0D] mb-2 font-semibold block">
+            <label className="text-sm md:text-base text-[#111827] mb-2 font-semibold block">
               Email
             </label>
             <input
@@ -46,7 +46,7 @@ function EditProfile() {
           </div>
 
           <div className="text-center pt-2">
-            <button className="bg-[#74AA2E] text-white font-semibold w-full py-3 rounded-lg hover:opacity-95 transition">
+            <button className="bg-[#111827] text-white font-semibold w-full py-3 rounded-lg hover:opacity-95 transition">
               Save & Change
             </button>
           </div>

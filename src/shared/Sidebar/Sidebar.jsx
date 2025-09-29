@@ -36,8 +36,8 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       </button>
 
       {/* Logo */}
-      <div className="flex justify-center items-center gap-2 px-5 mt-2">
-        <img src="/logo.png" className="w-[150px] h-[100px]" alt="User Avatar" />
+      <div className="flex justify-center items-center gap-2 px-5 mt-20">
+        <img src="/logo.png" className="w-[100px] h-[40px]" alt="User Avatar" />
       </div>
 
       {/* Sidebar Menu */}
