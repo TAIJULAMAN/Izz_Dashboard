@@ -23,17 +23,17 @@ const MainHeader = ({ toggleSidebar }) => {
               type="button"
               aria-label="Notifications"
               onClick={() => navigate('/notifications')}
-              className="relative p-2 rounded-full border border-[#74AA2E] hover:bg-white/60 transition"
+              className="relative p-2 rounded-full border border-[#111827] hover:bg-white/60 transition"
             >
               <IoNotificationsOutline className="w-6 h-6 text-[#0D0D0D]" />
-              <span className="absolute -top-0.5 -right-0.5 inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-[#74AA2E] text-white text-[10px] px-1 leading-none">3</span>
+              <span className="absolute -top-0.5 -right-0.5 inline-flex h-4 min-w-4 items-center justify-center rounded-full bg-[#111827] text-white text-[10px] px-1 leading-none">3</span>
             </button>
             {/* Chat */}
             <button
               type="button"
               aria-label="Open chat"
               onClick={() => navigate('/chat')}
-              className="p-2 rounded-full border border-[#74AA2E] hover:bg-white/60 transition"
+              className="p-2 rounded-full border border-[#111827] hover:bg-white/60 transition"
             >
               <IoChatbubbleEllipsesOutline className="w-6 h-6 text-[#0D0D0D]" />
             </button>

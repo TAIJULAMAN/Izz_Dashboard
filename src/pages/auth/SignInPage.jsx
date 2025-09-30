@@ -85,8 +85,8 @@ function SignInPage() {
                           width="21"
                           height="21"
                           rx="4"
-                          className="fill-[#00B047]"
-                          stroke="#00B047"
+                          className="fill-[#111827]"
+                          stroke="#111827"
                         ></rect>
                         <path
                           id="Vector"
@@ -112,7 +112,7 @@ function SignInPage() {
                           height="21"
                           rx="4"
                           className="fill-transparent"
-                          stroke="#00B047"
+                          stroke="#111827"
                         ></rect>
                       </g>
                     </svg>
@@ -122,7 +122,7 @@ function SignInPage() {
                     Remember Password
                   </span>
                 </label>
-                <Link to="/forget-password" className="text-[#74AA2E] text-xl">
+                <Link to="/forget-password" className="text-[#111827] text-xl">
                   Forgot Password?
                 </Link>
               </div>
@@ -130,7 +130,7 @@ function SignInPage() {
                 <button
                   onClick={() => navigate("/")}
                   type="button"
-                  className="w-1/3 bg-[#74AA2E] text-white font-bold py-3 rounded-lg shadow-lg cursor-pointer mt-5"
+                  className="w-1/3 bg-[#111827] text-white font-bold py-3 rounded-lg shadow-lg cursor-pointer mt-5"
                 >
                   Log In
                 </button>

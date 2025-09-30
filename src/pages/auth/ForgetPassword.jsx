@@ -29,7 +29,7 @@ function ForgetPassword() {
                 <button
                   onClick={() => navigate("/verification-code")}
                   type="button"
-                  className="w-1/3 bg-[#74AA2E] text-white font-bold py-3 rounded-lg shadow-lg cursor-pointer mt-5"
+                  className="w-1/3 bg-[#111827] text-white font-bold py-3 rounded-lg shadow-lg cursor-pointer mt-5"
                 >
                   Send Code
                 </button>

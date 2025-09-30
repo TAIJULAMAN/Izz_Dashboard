@@ -35,7 +35,7 @@ export default function AddAdmin() {
   return (
     <div className="p-5">
       {/* Header */}
-      <div className="bg-[#6BB43A] px-5 py-3 rounded-md mb-3 flex items-center gap-3">
+      <div className="bg-[#111827] px-5 py-3 rounded-md mb-3 flex items-center gap-3">
         <button
           onClick={() => navigate(-1)}
           className="text-white hover:opacity-90 transition"
@@ -132,7 +132,7 @@ export default function AddAdmin() {
           </div>
 
           <div className="pt-2">
-            <button type="submit" className="w-full bg-[#6BB43A] text-white font-semibold py-3 rounded-md">
+            <button type="submit" className="w-full bg-[#111827] text-white font-semibold py-3 rounded-md">
               Create Admin
             </button>
           </div>

@@ -17,13 +17,9 @@ export default function Notifications() {
     setItems(prev => prev.map(i => (i.id === id ? { ...i, read } : i)));
   };
   const markAllRead = () => setItems(prev => prev.map(i => ({ ...i, read: true })));
-  // const clearAll = () => setItems([]);
-
-  // Clicking an item card will mark it as read
-
   return (
     <div className="p-5 min-h-screen">
-      <div className="bg-[#74AA2E] px-4 md:px-5 py-3 rounded-md mb-3 flex flex-wrap md:flex-nowrap items-start md:items-center gap-2 md:gap-3">
+      <div className="bg-[#111827] px-4 md:px-5 py-3 rounded-md mb-3 flex flex-wrap md:flex-nowrap items-start md:items-center gap-2 md:gap-3">
         <button
           onClick={() => navigate(-1)}
           className="text-white hover:opacity-90 transition"
@@ -40,12 +36,11 @@ export default function Notifications() {
           {/* <Button onClick={clearAll} danger size="small">Clear all</Button> */}
         </div>
       </div>
-
       <ConfigProvider
         theme={{
           components: {
             List: {
-              colorPrimary: "#74AA2E",
+              colorPrimary: "#111827",
             },
           },
         }}
@@ -62,7 +57,7 @@ export default function Notifications() {
                 }`}
               >
                 {/* Unread Accent Bar */}
-                <div className={`w-1 rounded-full self-stretch ${item.read ? "bg-transparent" : "bg-[#74AA2E]"}`} />
+                <div className={`w-1 rounded-full self-stretch ${item.read ? "bg-transparent" : "bg-[#111827]"}`} />
 
                 {/* Content */}
                 <div className="flex-1">
@@ -74,7 +69,7 @@ export default function Notifications() {
                     <p className="text-gray-600 text-sm mt-1 pr-2">{item.description}</p>
                   )}
                   {!item.read && (
-                    <p className="text-[12px] text-[#74AA2E] mt-1">New</p>
+                    <p className="text-[12px] text-[#111827] mt-1">New</p>
                   )}
                 </div>
 
@@ -83,7 +78,7 @@ export default function Notifications() {
                   {item.read ? (
                     <Button size="small" onClick={() => markRead(item.id, false)}>Mark unread</Button>
                   ) : (
-                    <Button size="small" type="primary" style={{ background: '#74AA2E' }} onClick={() => markRead(item.id, true)}>Mark read</Button>
+                    <Button size="small" type="primary" style={{ background: '#111827' }} onClick={() => markRead(item.id, true)}>Mark read</Button>
                   )}
                 </div>
               </div>
