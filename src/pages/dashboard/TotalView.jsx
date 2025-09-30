@@ -81,7 +81,7 @@ const TotalView = () => {
             barSize={30}
             radius={[5, 5, 0, 0]}
             dataKey="videoView"
-            fill="#74AA2E"
+            fill="#111827"
           />
         </BarChart>
       </ResponsiveContainer>

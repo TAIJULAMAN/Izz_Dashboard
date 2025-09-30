@@ -74,8 +74,8 @@ const RecentUsers = () => {
         </div>
       ),
     },
-    { title: "Role", dataIndex: "role", key: "role" },
-    { title: "Clinic", dataIndex: "clinic", key: "clinic" },
+    // { title: "Role", dataIndex: "role", key: "role" },
+    // { title: "Clinic", dataIndex: "clinic", key: "clinic" },
     { title: "Email", dataIndex: "email", key: "email" },
     { title: "Phone No", dataIndex: "phone", key: "phone" },
     { title: "Joined Date", dataIndex: "joined", key: "joined" },
@@ -91,10 +91,10 @@ const RecentUsers = () => {
             },
 
             Table: {
-              headerBg: "#74AA2E",
+              headerBg: "#111827",
               headerColor: "rgb(255,255,255)",
               cellFontSize: 16,
-              headerSplitColor: "#74AA2E",
+              headerSplitColor: "#111827",
             },
           },
         }}

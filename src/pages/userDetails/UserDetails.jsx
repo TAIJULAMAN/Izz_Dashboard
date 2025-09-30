@@ -1,7 +1,6 @@
 import { ConfigProvider, Modal, Table, Select } from "antd";
 import { useMemo, useState } from "react";
 import { IoSearch, IoChevronBack, IoAddOutline } from "react-icons/io5";
-import { FiEdit2 } from "react-icons/fi";
 import { MdBlock } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import { FaRegEye } from "react-icons/fa";
@@ -15,10 +14,6 @@ function UserDetails() {
   const [editUser, setEditUser] = useState(null);
   const [roleFilter, setRoleFilter] = useState();
   const [searchQuery, setSearchQuery] = useState("");
-
-  // const showModal = () => {
-  //   setIsModalOpen(true);
-  // };
   const handleCancel = () => {
     setIsModalOpen(false);
   };
@@ -35,7 +30,7 @@ function UserDetails() {
     {
       key: "1",
       fullName: "John Doe",
-      role: "Dentist",
+      role: "User",
       clinic: "Downtown Dental Clinic",
       email: "john@example.com",
       phone: "+1 987 654 3210",
@@ -44,7 +39,7 @@ function UserDetails() {
     {
       key: "2",
       fullName: "Emma Smith",
-      role: "Practice Nurse",
+      role: "Vendor",
       clinic: "Smile Care Clinic",
       email: "emma@example.com",
       phone: "+1 987 654 3211",
@@ -53,7 +48,7 @@ function UserDetails() {
     {
       key: "3",
       fullName: "Liam Johnson",
-      role: "Practice Manager",
+      role: "User",
       clinic: "Healthy Teeth Clinic",
       email: "liam@example.com",
       phone: "+1 987 654 3212",
@@ -62,7 +57,7 @@ function UserDetails() {
     {
       key: "4",
       fullName: "Olivia Brown",
-      role: "Lab Technician",
+      role: "Vendor",
       clinic: "City Dental Center",
       email: "olivia@example.com",
       phone: "+1 987 654 3213",
@@ -71,7 +66,7 @@ function UserDetails() {
     {
       key: "5",
       fullName: "Noah Davis",
-      role: "Lab Manager",
+      role: "User",
       clinic: "Prime Smiles",
       email: "noah@example.com",
       phone: "+1 987 654 3214",
@@ -80,7 +75,7 @@ function UserDetails() {
     {
       key: "6",
       fullName: "Sophia Miller",
-      role: "Dentist",
+      role: "Vendor",
       clinic: "Bright Smile Hub",
       email: "sophia@example.com",
       phone: "+1 987 654 3215",
@@ -89,7 +84,7 @@ function UserDetails() {
     {
       key: "7",
       fullName: "James Wilson",
-      role: "Practice Manager",
+      role: "User",
       clinic: "Downtown Dental Clinic",
       email: "james@example.com",
       phone: "+1 987 654 3216",
@@ -98,7 +93,7 @@ function UserDetails() {
     {
       key: "8",
       fullName: "Isabella Moore",
-      role: "Practice Nurse",
+      role: "Vendor",
       clinic: "Healthy Teeth Clinic",
       email: "isabella@example.com",
       phone: "+1 987 654 3217",
@@ -107,7 +102,7 @@ function UserDetails() {
     {
       key: "9",
       fullName: "Benjamin Taylor",
-      role: "Lab Technician",
+      role: "User",
       clinic: "Prime Smiles",
       email: "benjamin@example.com",
       phone: "+1 987 654 3218",
@@ -116,7 +111,7 @@ function UserDetails() {
     {
       key: "10",
       fullName: "Mia Anderson",
-      role: "Dentist",
+      role: "Vendor",
       clinic: "City Dental Center",
       email: "mia@example.com",
       phone: "+1 987 654 3219",
@@ -146,7 +141,6 @@ function UserDetails() {
       ),
     },
     { title: "Role", dataIndex: "role", key: "role" },
-    { title: "Clinic", dataIndex: "clinic", key: "clinic" },
     { title: "Email", dataIndex: "email", key: "email" },
     { title: "Phone No", dataIndex: "phone", key: "phone" },
     { title: "Joined Date", dataIndex: "joined", key: "joined" },
@@ -155,14 +149,11 @@ function UserDetails() {
       key: "action",
       render: (_, record) => (
         <div className="flex gap-2">
-          <button className="" onClick={() => openEdit(record)}>
-            <FiEdit2 className="text-[#74AA2E] w-10 h-10 cursor-pointer rounded-md" />
-          </button>
           <button className="" onClick={() => openBlock(record)}>
             <MdBlock className="text-red-500 w-10 h-10 cursor-pointer rounded-md" />
           </button>
           <button className="" onClick={() => showViewModal(record)}>
-            <FaRegEye className="text-[#74AA2E] w-10 h-10 cursor-pointer rounded-md" />
+            <FaRegEye className="text-[#111827] w-10 h-10 cursor-pointer rounded-md" />
           </button>
         </div>
       ),
@@ -175,29 +166,12 @@ function UserDetails() {
       const matchRole = roleFilter ? r.role === roleFilter : true;
       const matchQuery = q
         ? [r.fullName, r.email, r.phone, r.clinic, r.role]
-            .filter(Boolean)
-            .some((v) => String(v).toLowerCase().includes(q))
+          .filter(Boolean)
+          .some((v) => String(v).toLowerCase().includes(q))
         : true;
       return matchRole && matchQuery;
     });
   }, [dataSource, roleFilter, searchQuery]);
-
-  const openEdit = (row) => {
-    setEditUser({ ...row });
-    setIsEditOpen(true);
-  };
-  const closeEdit = () => {
-    setIsEditOpen(false);
-    setEditUser(null);
-  };
-  const saveEdit = () => {
-    if (!editUser) return;
-    setDataSource((prev) =>
-      prev.map((r) => (r.key === editUser.key ? editUser : r))
-    );
-    setIsEditOpen(false);
-    setEditUser(null);
-  };
 
   const openBlock = (row) => {
     setSelectedUser(row);
@@ -211,7 +185,7 @@ function UserDetails() {
 
   return (
     <div>
-      <div className="bg-[#74AA2E] px-4 md:px-5 py-3 rounded-md mb-3 flex flex-wrap md:flex-nowrap items-start md:items-center gap-2 md:gap-3">
+      <div className="bg-[#111827] px-4 md:px-5 py-3 rounded-md mb-3 flex flex-wrap md:flex-nowrap items-start md:items-center gap-2 md:gap-3">
         <button
           onClick={() => navigate(-1)}
           className="text-white hover:opacity-90 transition"
@@ -238,9 +212,9 @@ function UserDetails() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search users..."
-              className="bg-white text-[#0D0D0D] placeholder-gray-500 pl-10 pr-3 py-2 rounded-md focus:outline-none"
+              className="bg-white text-[#0D0D0D] placeholder-[#111827] pl-10 pr-3 py-2 rounded-md focus:outline-none"
             />
-            <IoSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
+            <IoSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-[#111827]" />
           </div>
           <ConfigProvider
             theme={{
@@ -264,23 +238,12 @@ function UserDetails() {
               popupMatchSelectWidth={false}
               dropdownStyle={{ paddingTop: 8, paddingBottom: 8 }}
               options={[
-                { label: "Dentist", value: "Dentist" },
-                { label: "Lab Manager", value: "Lab Manager" },
-                { label: "Practice Manager", value: "Practice Manager" },
-                { label: "Practice Nurse", value: "Practice Nurse" },
-                { label: "Lab Technician", value: "Lab Technician" },
+                { label: "User", value: "User" },
+                { label: "Vendor", value: "Vendor" },
                 { label: "Blocked Users", value: "Blocked" },
               ]}
             />
           </ConfigProvider>
-          <button
-            type="button"
-            onClick={() => navigate('/create-user')}
-            className="bg-white text-[#74AA2E] px-3 py-2 rounded-md font-semibold flex items-center justify-center gap-2 hover:opacity-95 transition w-full md:w-auto"
-          >
-            <IoAddOutline className="w-4 h-4" />
-            Create User
-          </button>
         </div>
       </div>
 
@@ -291,18 +254,18 @@ function UserDetails() {
               activeBorderColor: "#00c0b5",
             },
             Pagination: {
-              colorPrimaryBorder: "#00c0b5",
-              colorBorder: "#00c0b5",
-              colorPrimaryHover: "#00c0b5",
-              colorTextPlaceholder: "#00c0b5",
-              itemActiveBgDisabled: "#00c0b5",
-              colorPrimary: "#00c0b5",
+              colorPrimaryBorder: "#111827",
+              colorBorder: "#111827",
+              colorPrimaryHover: "#111827",
+              colorTextPlaceholder: "#111827",
+              itemActiveBgDisabled: "#111827",
+              colorPrimary: "#111827",
             },
             Table: {
-              headerBg: "#74AA2E",
+              headerBg: "#111827",
               headerColor: "rgb(255,255,255)",
               cellFontSize: 16,
-              headerSplitColor: "#74AA2E",
+              headerSplitColor: "#111827",
             },
           },
         }}
@@ -321,7 +284,7 @@ function UserDetails() {
           footer={null}
         >
           <div className="flex flex-col justify-center items-center py-10">
-            <h1 className="text-3xl text-center text-[#74AA2E]">Block User</h1>
+            <h1 className="text-3xl text-center text-[#111827]">Block User</h1>
             <p className="text-xl text-center mt-5">
               {selectedUser
                 ? `Do you want to block ${selectedUser.fullName}?`
@@ -336,118 +299,12 @@ function UserDetails() {
               </button>
               <button
                 onClick={confirmBlock}
-                className="bg-[#74AA2E] text-white font-semibold py-3 px-5 rounded-lg"
+                className="bg-[#111827] text-white font-semibold py-3 px-5 rounded-lg"
               >
                 Block
               </button>
             </div>
           </div>
-        </Modal>
-
-        {/* Edit Modal */}
-        <Modal open={isEditOpen} onCancel={closeEdit} footer={null} centered>
-          {editUser && (
-            <div className="p-1">
-              <h3 className="text-xl font-bold mb-4">Edit User</h3>
-              <div className="grid grid-cols-1 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Full Name
-                  </label>
-                  <input
-                    type="text"
-                    value={editUser.fullName}
-                    onChange={(e) =>
-                      setEditUser((s) => ({ ...s, fullName: e.target.value }))
-                    }
-                    className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#74AA2E]"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Role</label>
-                  <Select
-                    className="w-full"
-                    value={editUser.role}
-                    onChange={(val) => setEditUser((s) => ({ ...s, role: val }))}
-                    options={[
-                      { label: "Dentist", value: "Dentist" },
-                      { label: "Lab Manager", value: "Lab Manager" },
-                      { label: "Practice Manager", value: "Practice Manager" },
-                      { label: "Practice Nurse", value: "Practice Nurse" },
-                      { label: "Lab Technician", value: "Lab Technician" },
-                      { label: "Blocked", value: "Blocked" },
-                    ]}
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Clinic
-                  </label>
-                  <input
-                    type="text"
-                    value={editUser.clinic}
-                    onChange={(e) =>
-                      setEditUser((s) => ({ ...s, clinic: e.target.value }))
-                    }
-                    className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#74AA2E]"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    value={editUser.email}
-                    onChange={(e) =>
-                      setEditUser((s) => ({ ...s, email: e.target.value }))
-                    }
-                    className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#74AA2E]"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Phone No
-                  </label>
-                  <input
-                    type="text"
-                    value={editUser.phone}
-                    onChange={(e) =>
-                      setEditUser((s) => ({ ...s, phone: e.target.value }))
-                    }
-                    className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#74AA2E]"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Joined Date
-                  </label>
-                  <input
-                    type="date"
-                    value={editUser.joined}
-                    onChange={(e) =>
-                      setEditUser((s) => ({ ...s, joined: e.target.value }))
-                    }
-                    className="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#74AA2E]"
-                  />
-                </div>
-              </div>
-              <div className="flex justify-end gap-2 mt-6">
-                <button
-                  onClick={closeEdit}
-                  className="bg-gray-500 text-white font-semibold px-6 py-2 rounded-md"
-                >
-                  Cancel
-                </button>
-                <button
-                  onClick={saveEdit}
-                  className="bg-[#74AA2E] text-white font-semibold px-6 py-2 rounded-md"
-                >
-                  Save
-                </button>
-              </div>
-            </div>
-          )}
         </Modal>
 
         {/* View Modal */}
@@ -462,7 +319,7 @@ function UserDetails() {
           {selectedUser && (
             <div className="relative">
               {/* Header with green gradient */}
-              <div className="bg-gradient-to-r from-[#74AA2E] to-[#5F8C22] p-6 -m-6 mb-6 rounded-t-lg">
+              <div className="bg-gradient-to-r from-[#111827] to-[#111827] p-6 -m-6 mb-6 rounded-t-lg">
                 <div className="flex items-center gap-6">
                   <div className="relative">
                     <img
@@ -476,9 +333,9 @@ function UserDetails() {
                       {selectedUser.fullName}
                     </h2>
                     <div className="flex items-center gap-3 mb-1">
-                      <span className="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium">
+                      {/* <span className="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium">
                         {selectedUser.clinic}
-                      </span>
+                      </span> */}
                       <span className="bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium">
                         Joined: {selectedUser.joined}
                       </span>
@@ -499,16 +356,6 @@ function UserDetails() {
                   <div className="text-gray-600 text-sm">Phone No</div>
                   <div className="text-lg font-semibold">
                     {selectedUser.phone}
-                  </div>
-                </div>
-                <div className="bg-white border border-gray-200 p-4 rounded-xl shadow-sm">
-                  <div className="text-gray-600 text-sm">Role</div>
-                  <div className="text-lg font-semibold">{selectedUser.role}</div>
-                </div>
-                <div className="bg-white border border-gray-200 p-4 rounded-xl shadow-sm">
-                  <div className="text-gray-600 text-sm">Clinic</div>
-                  <div className="text-lg font-semibold">
-                    {selectedUser.clinic}
                   </div>
                 </div>
                 <div className="bg-white border border-gray-200 p-4 rounded-xl shadow-sm">
