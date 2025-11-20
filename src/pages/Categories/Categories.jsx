@@ -2,7 +2,6 @@ import { useMemo, useState } from "react";
 import { FiEdit2, FiTrash2, FiPlus } from "react-icons/fi";
 
 function Categories() {
-  const [activeTab, setActiveTab] = useState("service");
   const [page, setPage] = useState(1);
   const pageSize = 8;
 
@@ -91,29 +90,7 @@ function Categories() {
         </button>
       </div>
 
-      {/* Tabs */}
-      <div className="flex items-center gap-3">
-        <button
-          onClick={() => setActiveTab("service")}
-          className={`px-4 py-2 rounded-md border ${
-            activeTab === "service"
-              ? "bg-[#111827] text-white border-[#0EA5E9]"
-              : "bg-white text-[#111827] border-[#111827]"
-          }`}
-        >
-          Service Type
-        </button>
-        <button
-          onClick={() => setActiveTab("spec")}
-          className={`px-4 py-2 rounded-md border ${
-            activeTab === "spec"
-              ? "bg-[#111827] text-white border-[#0EA5E9]"
-              : "bg-white text-[#111827] border-[#111827]"
-          }`}
-        >
-          Specializations
-        </button>
-      </div>
+      
 
       {/* Table */}
       <div className="border rounded-lg overflow-hidden">
@@ -123,7 +100,7 @@ function Categories() {
               <tr className="text-left">
                 <th className="border-y px-3 py-2">S.ID</th>
                 <th className="border-y px-3 py-2">Category Name</th>
-                <th className="border-y px-3 py-2">Category Image/Icon</th>
+                {/* <th className="border-y px-3 py-2">Category Image/Icon</th> */}
                 <th className="border-y px-3 py-2">Category Type</th>
                 <th className="border-y px-3 py-2">Action</th>
               </tr>
@@ -134,7 +111,7 @@ function Categories() {
                   <td className="border-b px-3 py-3">{row.sid}</td>
                   <td className="border-b px-3 py-3">{row.name}</td>
                   <td className="border-b px-3 py-3">{row.type}</td>
-                  <td className="border-b px-3 py-3">
+                  {/* <td className="border-b px-3 py-3">
                     {row.icon ? (
                       <img
                         src={row.icon}
@@ -144,7 +121,7 @@ function Categories() {
                     ) : (
                       <span className="text-gray-400">—</span>
                     )}
-                  </td>
+                  </td> */}
                   <td className="border-b px-3 py-3">
                     <div className="flex items-center gap-3">
                       <button

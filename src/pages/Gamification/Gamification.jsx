@@ -2,6 +2,10 @@ import { useState } from "react";
 import { Modal } from "antd";
 import { IoAddOutline, IoRemoveOutline } from "react-icons/io5";
 import { FaPen, FaTrash } from "react-icons/fa";
+import explorer from "../../../public/explorer.png";
+import critic from "../../../public/critic.png";
+import connector from "../../../public/connector.png";
+import challenger from "../../../public/challenger.png";
 
 function Gamification() {
   const [xpSettings, setXpSettings] = useState([
@@ -14,47 +18,111 @@ function Gamification() {
   ]);
 
   const [badges, setBadges] = useState([
-    { id: 1, name: "Explorer", desc: "1st Booking", active: true },
-    { id: 2, name: "Critic", desc: "1st Booking", active: true },
-    { id: 3, name: "Connector", desc: "1st Booking", active: true },
-    { id: 4, name: "Challenger", desc: "1st Booking", active: true },
+    {
+      id: 1,
+      name: "Explorer",
+      desc: "1st Booking",
+      icon: explorer,
+      active: true,
+    },
+    {
+      id: 2,
+      name: "Critic",
+      desc: "1st Booking",
+      icon: critic,
+      active: true,
+    },
+    {
+      id: 3,
+      name: "Connector",
+      desc: "1st Booking",
+      icon: connector,
+      active: true,
+    },
+    {
+      id: 4,
+      name: "Challenger",
+      desc: "1st Booking",
+      icon: challenger,
+      active: true,
+    },
   ]);
 
   const [levels, setLevels] = useState([
-    { id: 1, level: "Summer Challenge", range: "100 - 500", benefits: "Discount 5%", status: "50%" },
-    { id: 2, level: "Winter Challenge", range: "501 - 1000", benefits: "Priority Access", status: "70%" },
-    { id: 3, level: "Festival Challenge", range: "1001 - 2000", benefits: "VIP Perks", status: "55%" },
+    {
+      id: 1,
+      level: "Summer Challenge",
+      range: "100 - 500",
+      benefits: "Discount 5%",
+      status: "50%",
+    },
+    {
+      id: 2,
+      level: "Winter Challenge",
+      range: "501 - 1000",
+      benefits: "Priority Access",
+      status: "70%",
+    },
+    {
+      id: 3,
+      level: "Festival Challenge",
+      range: "1001 - 2000",
+      benefits: "VIP Perks",
+      status: "55%",
+    },
   ]);
 
   // Modals state
   const [badgeToDelete, setBadgeToDelete] = useState(null);
   const [levelToDelete, setLevelToDelete] = useState(null);
   const [levelToEdit, setLevelToEdit] = useState(null);
-  const [editForm, setEditForm] = useState({ level: "", range: "", benefits: "", status: "" });
+  const [editForm, setEditForm] = useState({
+    level: "",
+    range: "",
+    benefits: "",
+    status: "",
+  });
 
   const inc = (idx) =>
-    setXpSettings((arr) => arr.map((r, i) => (i === idx ? { ...r, value: r.value + 1 } : r)));
+    setXpSettings((arr) =>
+      arr.map((r, i) => (i === idx ? { ...r, value: r.value + 1 } : r))
+    );
   const dec = (idx) =>
-    setXpSettings((arr) => arr.map((r, i) => (i === idx ? { ...r, value: Math.max(0, r.value - 1) } : r)));
+    setXpSettings((arr) =>
+      arr.map((r, i) =>
+        i === idx ? { ...r, value: Math.max(0, r.value - 1) } : r
+      )
+    );
   const toggleBadge = (id) =>
-    setBadges((arr) => arr.map((b) => (b.id === id ? { ...b, active: !b.active } : b)));
-  const askDeleteBadge = (id) => setBadgeToDelete(badges.find((b) => b.id === id) || null);
+    setBadges((arr) =>
+      arr.map((b) => (b.id === id ? { ...b, active: !b.active } : b))
+    );
+  const askDeleteBadge = (id) =>
+    setBadgeToDelete(badges.find((b) => b.id === id) || null);
   const confirmDeleteBadge = () => {
-    if (badgeToDelete) setBadges((arr) => arr.filter((b) => b.id !== badgeToDelete.id));
+    if (badgeToDelete)
+      setBadges((arr) => arr.filter((b) => b.id !== badgeToDelete.id));
     setBadgeToDelete(null);
   };
   const cancelDeleteBadge = () => setBadgeToDelete(null);
 
-  const askDeleteLevel = (id) => setLevelToDelete(levels.find((l) => l.id === id) || null);
+  const askDeleteLevel = (id) =>
+    setLevelToDelete(levels.find((l) => l.id === id) || null);
   const confirmDeleteLevel = () => {
-    if (levelToDelete) setLevels((arr) => arr.filter((l) => l.id !== levelToDelete.id));
+    if (levelToDelete)
+      setLevels((arr) => arr.filter((l) => l.id !== levelToDelete.id));
     setLevelToDelete(null);
   };
   const cancelDeleteLevel = () => setLevelToDelete(null);
 
   const openEditLevel = (lvl) => {
     setLevelToEdit(lvl);
-    setEditForm({ level: lvl.level, range: lvl.range, benefits: lvl.benefits, status: lvl.status });
+    setEditForm({
+      level: lvl.level,
+      range: lvl.range,
+      benefits: lvl.benefits,
+      status: lvl.status,
+    });
   };
   const cancelEditLevel = () => setLevelToEdit(null);
   const saveEditLevel = () => {
@@ -62,7 +130,13 @@ function Gamification() {
     setLevels((arr) =>
       arr.map((l) =>
         l.id === levelToEdit.id
-          ? { ...l, level: editForm.level, range: editForm.range, benefits: editForm.benefits, status: editForm.status }
+          ? {
+              ...l,
+              level: editForm.level,
+              range: editForm.range,
+              benefits: editForm.benefits,
+              status: editForm.status,
+            }
           : l
       )
     );
@@ -72,16 +146,23 @@ function Gamification() {
   return (
     <div className="space-y-4">
       <div className="bg-[#111827] px-4 md:px-5 py-3 rounded-md">
-        <h1 className="text-white text-xl sm:text-2xl font-bold">Gamification Points</h1>
+        <h1 className="text-white text-xl sm:text-2xl font-bold">
+          Gamification Points
+        </h1>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {/* XP to points conversion rate */}
         <div className="border rounded-lg p-4">
-          <h2 className="text-base font-semibold mb-3">XP to points conversion rate</h2>
+          <h2 className="text-base font-semibold mb-3">
+            XP to points conversion rate
+          </h2>
           <div className="space-y-3">
             {xpSettings.map((row, idx) => (
-              <div key={row.key} className="flex items-center justify-between gap-3">
+              <div
+                key={row.key}
+                className="flex items-center justify-between gap-3"
+              >
                 <span className="text-sm text-[#0D0D0D]">{row.label}</span>
                 <div className="flex items-center gap-2">
                   <button
@@ -97,7 +178,9 @@ function Gamification() {
                     value={row.value}
                     onChange={(e) => {
                       const v = Number(e.target.value) || 0;
-                      setXpSettings((arr) => arr.map((r, i) => (i === idx ? { ...r, value: v } : r)));
+                      setXpSettings((arr) =>
+                        arr.map((r, i) => (i === idx ? { ...r, value: v } : r))
+                      );
                     }}
                   />
                   <button
@@ -116,19 +199,31 @@ function Gamification() {
 
         {/* Badges & Achievements */}
         <div className="border rounded-lg p-4">
-          <h2 className="text-base font-semibold mb-3">Badges & Achievements Management</h2>
+          <h2 className="text-base font-semibold mb-3">
+            Badges & Achievements Management
+          </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {badges.map((b) => (
-              <div key={b.id} className="border rounded-lg p-3 flex items-start justify-between">
-                <div>
-                  <div className="font-semibold">{b.name}</div>
-                  <div className="text-xs text-gray-500">{b.desc}</div>
+              <div
+                key={b.id}
+                className="border rounded-lg p-3 flex items-start justify-between"
+              >
+                <div className="flex gap-2">
+                  <img src={b.icon} alt={b.name} className="w-8 h-8" />
+                  <div>
+                    <p className="font-semibold">{b.name}</p>
+                    <p className="text-xs text-gray-500">{b.desc}</p>
+                  </div>
                 </div>
                 <div className="flex items-center gap-2">
                   <button
                     type="button"
                     onClick={() => toggleBadge(b.id)}
-                    className={`px-2 py-1 rounded text-xs font-medium ${b.active ? "bg-emerald-100 text-emerald-700" : "bg-gray-100 text-gray-600"}`}
+                    className={`px-2 py-1 rounded text-xs font-medium ${
+                      b.active
+                        ? "bg-emerald-100 text-emerald-700"
+                        : "bg-gray-100 text-gray-600"
+                    }`}
                   >
                     {b.active ? "Active" : "Inactive"}
                   </button>
@@ -169,10 +264,20 @@ function Gamification() {
                   <td className="border-b px-3 py-2">{l.status}</td>
                   <td className="border-b px-3 py-2">
                     <div className="flex items-center gap-3 text-[#111827]">
-                      <button type="button" className="hover:opacity-80" aria-label="edit" onClick={() => openEditLevel(l)}>
+                      <button
+                        type="button"
+                        className="hover:opacity-80"
+                        aria-label="edit"
+                        onClick={() => openEditLevel(l)}
+                      >
                         <FaPen />
                       </button>
-                      <button type="button" className="hover:text-red-600" aria-label="delete" onClick={() => askDeleteLevel(l.id)}>
+                      <button
+                        type="button"
+                        className="text-red-600"
+                        aria-label="delete"
+                        onClick={() => askDeleteLevel(l.id)}
+                      >
                         <FaTrash />
                       </button>
                     </div>
@@ -194,7 +299,9 @@ function Gamification() {
         title="Delete Badge"
       >
         {badgeToDelete && (
-          <p>Are you sure you want to delete the badge "{badgeToDelete.name}"?</p>
+          <p>
+            Are you sure you want to delete the badge "{badgeToDelete.name}"?
+          </p>
         )}
       </Modal>
 
@@ -208,7 +315,9 @@ function Gamification() {
         title="Delete Level"
       >
         {levelToDelete && (
-          <p>Are you sure you want to delete the level "{levelToDelete.level}"?</p>
+          <p>
+            Are you sure you want to delete the level "{levelToDelete.level}"?
+          </p>
         )}
       </Modal>
 
@@ -226,7 +335,9 @@ function Gamification() {
             <input
               className="border rounded-md px-3 py-2"
               value={editForm.level}
-              onChange={(e) => setEditForm((p) => ({ ...p, level: e.target.value }))}
+              onChange={(e) =>
+                setEditForm((p) => ({ ...p, level: e.target.value }))
+              }
             />
           </div>
           <div className="flex flex-col gap-1">
@@ -234,7 +345,9 @@ function Gamification() {
             <input
               className="border rounded-md px-3 py-2"
               value={editForm.range}
-              onChange={(e) => setEditForm((p) => ({ ...p, range: e.target.value }))}
+              onChange={(e) =>
+                setEditForm((p) => ({ ...p, range: e.target.value }))
+              }
             />
           </div>
           <div className="flex flex-col gap-1">
@@ -242,7 +355,9 @@ function Gamification() {
             <input
               className="border rounded-md px-3 py-2"
               value={editForm.benefits}
-              onChange={(e) => setEditForm((p) => ({ ...p, benefits: e.target.value }))}
+              onChange={(e) =>
+                setEditForm((p) => ({ ...p, benefits: e.target.value }))
+              }
             />
           </div>
           <div className="flex flex-col gap-1">
@@ -250,7 +365,9 @@ function Gamification() {
             <input
               className="border rounded-md px-3 py-2"
               value={editForm.status}
-              onChange={(e) => setEditForm((p) => ({ ...p, status: e.target.value }))}
+              onChange={(e) =>
+                setEditForm((p) => ({ ...p, status: e.target.value }))
+              }
             />
           </div>
         </div>
