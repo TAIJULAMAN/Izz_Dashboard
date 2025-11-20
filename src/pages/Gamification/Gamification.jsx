@@ -2,10 +2,12 @@ import { useState } from "react";
 import { Modal } from "antd";
 import { IoAddOutline, IoRemoveOutline } from "react-icons/io5";
 import { FaPen, FaTrash } from "react-icons/fa";
-import explorer from "../../../public/explorer.png";
-import critic from "../../../public/critic.png";
-import connector from "../../../public/connector.png";
-import challenger from "../../../public/challenger.png";
+
+
+import  explorer from "../../assets/Explorer.png";
+import  critic from "../../assets/Critic.png";
+import  connector from "../../assets/Connector.png";
+import  challenger from "../../assets/Challenger.png";
 
 function Gamification() {
   const [xpSettings, setXpSettings] = useState([
@@ -18,34 +20,10 @@ function Gamification() {
   ]);
 
   const [badges, setBadges] = useState([
-    {
-      id: 1,
-      name: "Explorer",
-      desc: "1st Booking",
-      icon: explorer,
-      active: true,
-    },
-    {
-      id: 2,
-      name: "Critic",
-      desc: "1st Booking",
-      icon: critic,
-      active: true,
-    },
-    {
-      id: 3,
-      name: "Connector",
-      desc: "1st Booking",
-      icon: connector,
-      active: true,
-    },
-    {
-      id: 4,
-      name: "Challenger",
-      desc: "1st Booking",
-      icon: challenger,
-      active: true,
-    },
+    { id: 1, name: "Explorer", desc: "1st Booking", icon: explorer, active: true },
+    { id: 2, name: "Critic", desc: "1st Booking", icon: critic, active: true },
+    { id: 3, name: "Connector", desc: "1st Booking", icon: connector, active: true },
+    { id: 4, name: "Challenger", desc: "1st Booking", icon: challenger, active: true },
   ]);
 
   const [levels, setLevels] = useState([
