@@ -6,12 +6,11 @@ import { TbBrandWechat, TbReport } from "react-icons/tb";
 import { IoMdSettings } from "react-icons/io";
 import { IoCloseSharp, IoLogOutOutline } from "react-icons/io5";
 import {
-  MdOutlineInventory2,
-  MdOutlineAssignment,
-  MdLocalHospital,
   MdAdminPanelSettings,
+  MdLocalHospital,
+  MdOutlineAssignment,
+  MdOutlineInventory2,
 } from "react-icons/md";
-import { RiFlaskLine } from "react-icons/ri";
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
   const location = useLocation();
@@ -20,8 +19,8 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
   return (
     <div
-      className={`bg-[#fff] text-[#0D0D0D] h-screen overflow-y-auto py-5 md:py-0 z-50 transition-transform
-        w-[80%] sm:w-[70%] md:w-[50%] lg:w-68 xl:w-72
+      className={`bg-[#fff] text-[#0D0D0D] border border-[#E5E7EB] h-screen overflow-y-auto py-5 md:py-0 z-50 transition-transform shadow-lg my-5 rounded-lg shadow-[0_0_10px_0_rgba(0,0,0,0.1)]
+        w-[80%] sm:w-[70%] md:w-[60%] lg:w-60 xl:w-72
         ${isOpen ? "translate-x-0" : "-translate-x-full"}
         fixed top-0 left-0
         lg:static lg:translate-x-0
@@ -47,7 +46,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
           <li
             className={`flex items-center gap-2 cursor-pointer transition-all duration-300 ease-in-out ${
               isActive("/")
-                ? "bg-[#74AA2E] text-white px-3 py-3 rounded-lg"
+                ? "bg-[#111827] text-white px-3 py-3 rounded-lg"
                 : ""
             }`}
           >
@@ -60,7 +59,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
           <li
             className={`flex items-center gap-2 mt-5 cursor-pointer transition-all duration-300 ease-in-out ${
               isActive("/user-details")
-                ? "bg-[#74AA2E] text-white px-3 py-3 rounded-lg"
+                ? "bg-[#111827] text-white px-3 py-3 rounded-lg"
                 : ""
             }`}
           >
@@ -68,65 +67,65 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
             <p className="text-lg font-semibold">User Management</p>
           </li>
         </Link>
-        {/* Product */}
-        <Link to="/product">
+        {/* Earnings */}
+        <Link to="/earnings">
           <li
             className={`flex items-center gap-2 mt-5 cursor-pointer transition-all duration-300 ease-in-out ${
-              isActive("/product")
-                ? "bg-[#74AA2E] text-white px-3 py-3 rounded-lg"
+              isActive("/earnings")
+                ? "bg-[#111827] text-white px-3 py-3 rounded-lg"
                 : ""
             }`}
           >
             <MdOutlineInventory2 className="w-5 h-5" />
-            <p className="text-lg font-semibold">Product</p>
+            <p className="text-lg font-semibold">Earnings</p>
           </li>
         </Link>
 
-        {/* Case Management */}
-        <Link to="/case-management">
+        {/* Gamification*/}
+        <Link to="/gamification">
           <li
             className={`flex items-center gap-2 mt-5 cursor-pointer transition-all duration-300 ease-in-out ${
-              isActive("/case-management")
-                ? "bg-[#74AA2E] text-white px-3 py-3 rounded-lg"
+              isActive("/gamification")
+                ? "bg-[#111827] text-white px-3 py-3 rounded-lg"
                 : ""
             }`}
           >
             <MdOutlineAssignment className="w-5 h-5" />
-            <p className="text-lg font-semibold">Case Management</p>
+            <p className="text-lg font-semibold">Gamification</p>
           </li>
         </Link>
-        {/* Clinic Management */}
-        <Link to="/clinic-management">
+        {/* Categories */}
+        <Link to="/categories">
           <li
             className={`flex items-center gap-2 mt-5 cursor-pointer transition-all duration-300 ease-in-out ${
-              isActive("/clinic-management")
-                ? "bg-[#74AA2E] text-white px-3 py-3 rounded-lg"
+              isActive("/categories")
+                ? "bg-[#111827] text-white px-3 py-3 rounded-lg"
                 : ""
             }`}
           >
             <MdLocalHospital className="w-5 h-5" />
-            <p className="text-lg font-semibold">Clinic Management</p>
+            <p className="text-lg font-semibold">Categories</p>
           </li>
         </Link>
         {/* Lab Management */}
-        <Link to="/lab-management">
+        {/* <Link to="/lab-management">
           <li
             className={`flex items-center gap-2 mt-5 cursor-pointer transition-all duration-300 ease-in-out ${
               isActive("/lab-management")
-                ? "bg-[#74AA2E] text-white px-3 py-3 rounded-lg"
+                ? "bg-[#111827] text-white px-3 py-3 rounded-lg"
                 : ""
             }`}
           >
             <RiFlaskLine className="w-5 h-5" />
             <p className="text-lg font-semibold">Lab Management</p>
           </li>
-        </Link>
+        </Link> */}
 
         <Link to="/create-admin">
           <li
             className={`flex items-center gap-2 mt-5 cursor-pointer transition-all duration-300 ease-in-out ${
               isActive("/create-admin")
-                ? "bg-[#74AA2E] text-white px-3 py-3 rounded-lg"
+                ? "bg-[#111827] text-white px-3 py-3 rounded-lg"
                 : ""
             }`}
           >
@@ -140,7 +139,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
           <li
             className={`flex items-center gap-2 mt-5 cursor-pointer transition-all duration-300 ease-in-out ${
               isActive("/chat")
-                ? "bg-[#74AA2E] text-white px-3 py-3 rounded-lg"
+                ? "bg-[#111827] text-white px-3 py-3 rounded-lg"
                 : ""
             }`}
           >
@@ -152,7 +151,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
           <li
             className={`flex items-center gap-2 mt-5 cursor-pointer transition-all duration-300 ease-in-out ${
               isActive("/reports")
-                ? "bg-[#74AA2E] text-white px-3 py-3 rounded-lg"
+                ? "bg-[#111827] text-white px-3 py-3 rounded-lg"
                 : ""
             }`}
           >
@@ -164,7 +163,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
           <li
             className={`flex items-center gap-2 mt-5 cursor-pointer transition-all duration-300 ease-in-out ${
               isActive("/settings")
-                ? "bg-[#74AA2E] text-white px-3 py-3 rounded-lg"
+                ? "bg-[#111827] text-white px-3 py-3 rounded-lg"
                 : ""
             }`}
           >
@@ -177,7 +176,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       {/* Logout Button */}
       <div className="absolute mt-8 md:mt-20 mmd:mt-20 w-full px-5">
         <Link to="/sign-in">
-          <button className="flex items-center gap-4 w-full py-3 rounded-lg bg-[#74AA2E]  px-3 duration-200 text-white justify-center ">
+          <button className="flex items-center gap-4 w-full py-3 rounded-lg bg-[#111827]  px-3 duration-200 text-white justify-center ">
             <IoLogOutOutline className="w-5 h-5 font-bold" />
             <span>Logout</span>
           </button>

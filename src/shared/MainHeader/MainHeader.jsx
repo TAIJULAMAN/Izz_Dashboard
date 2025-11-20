@@ -8,7 +8,7 @@ const MainHeader = ({ toggleSidebar }) => {
 
   return (
     <div className="relative w-full px-5">
-      <header className="bg-[#EDF1ED] shadow-sm rounded-lg border border-[#E5E7EB] overflow-hidden">
+      <header className="shadow-sm rounded-lg border border-[#E5E7EB] overflow-hidden">
         <div className="flex justify-between items-center px-5 md:px-10 h-[80px]">
           <button
             onClick={toggleSidebar}

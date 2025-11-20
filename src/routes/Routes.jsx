@@ -28,6 +28,10 @@ import ClinicManagement from "../pages/ClinicManagement/ClinicManagement";
 import AddLab from "../pages/Add Lab/AddLab";
 import CaseManagment from "../pages/CaseManagment/CaseManagment";
 import Product from "../pages/Product/Product";
+import Earnings from "../pages/Earnings/Earnings";
+import Coupon from "../pages/Coupon/Coupon";
+import Gamification from "../pages/Gamification/Gamification";
+import Categories from "../pages/Categories/Categories";
 
 const router = createBrowserRouter([
   {
@@ -58,6 +62,22 @@ const router = createBrowserRouter([
       {
         path: "/user-details",
         element: <UserDetails />,
+      },
+      {
+        path: "/earnings",
+        element: <Earnings />,
+      },
+      {
+        path: "/coupon",
+        element: <Coupon />,
+      },
+      {
+        path: "/gamification",
+        element: <Gamification />,
+      },
+      {
+        path: "/categories",
+        element: <Categories />,
       },
       {
         path: "/notifications",
